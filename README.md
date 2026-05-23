@@ -1,6 +1,6 @@
 # Top-Conference Paper Writing Skill
 
-A cross-platform Codex and Claude Code skill/plugin for writing and preparing top-tier conference papers, especially CVPR/ICCV/ECCV/NeurIPS/ICML/ICLR-style submissions, using official LaTeX templates and rigorous evidence gates.
+A cross-platform Codex and Claude Code skill/plugin for writing and preparing top-tier conference papers, especially CVPR/ICCV/ECCV/NeurIPS/ICML/ICLR-style submissions, using official LaTeX templates, multi-agent collaboration, and rigorous evidence gates.
 
 The skill covers:
 
@@ -10,8 +10,9 @@ The skill covers:
 - preservation of the original author kit, with `main_template_original.tex` saved when the working root is adapted;
 - section-level writing recipes from abstract to conclusion;
 - claim/evidence/experiment/reviewer-risk traceability;
+- multi-agent enhanced workflows with orchestrator, evidence, experiment, integrity, review, and format roles;
 - integrity gates for result, claim, citation, and method/config consistency;
-- multi-perspective simulated top-conference review;
+- multi-perspective simulated top-conference review with independent reviewer reports;
 - experiment, table, figure, baseline, and ablation planning;
 - static checks for template misuse, anonymity leaks, unresolved TODOs, labels, and missing figures.
 
@@ -88,6 +89,12 @@ To run static submission checks:
 python skills/cvpr-paper-writing/scripts/check_submission_static.py --paper-dir paper_cvpr
 ```
 
+For full-paper work, use the multi-agent enhanced mode:
+
+```text
+Use $cvpr-paper-writing in multi-agent-enhanced mode to plan, draft, audit, review, and format this top-conference paper.
+```
+
 ## Repository Layout
 
 ```text
@@ -104,4 +111,4 @@ CLAUDE.md
 
 ## Version
 
-Current release: `v0.3.0`.
+Current release: `v0.4.0`.

@@ -17,7 +17,8 @@ It guides agents through:
 - section-level writing from abstract through conclusion;
 - claim/evidence/experiment/reviewer-risk traceability;
 - integrity gates for claims, citations, results, and method/config consistency;
-- multi-perspective top-conference review as a lightweight protocol, not mandatory agent orchestration;
+- multi-agent enhanced orchestration for complete-paper work, with read/write boundaries and final synthesis;
+- multi-perspective top-conference review with independent reviewer reports;
 - static checks for template misuse, anonymity leaks, unresolved TODOs, labels, and missing figures.
 
 ## Platform Entry Points
@@ -41,7 +42,8 @@ CLAUDE.md
 
 - Keep the skill generic. Do not add project-specific paper claims or method names.
 - Preserve the official-template plus `paper.tex` workflow. If `main.tex` is adapted for compilation, keep `main_template_original.tex`.
-- Do not add multi-agent orchestration unless explicitly requested.
+- Preserve the multi-agent enhanced workflow for full papers while keeping a single-agent fallback for small tasks.
+- Keep reviewer and integrity agents read-only with respect to manuscript source unless the orchestrator explicitly authorizes a bounded fix.
 - Keep `SKILL.md` concise and move details into `references/`.
 - Keep scripts deterministic and free of third-party Python dependencies.
 - Update `VERSION`, `README.md`, `.codex-plugin/plugin.json`, `.claude-plugin/plugin.json`, and `.claude-plugin/marketplace.json` together on release.

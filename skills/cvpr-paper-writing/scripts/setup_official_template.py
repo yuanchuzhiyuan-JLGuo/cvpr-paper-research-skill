@@ -64,6 +64,7 @@ def find_extracted_root(extract_dir: Path) -> Path:
 def ensure_plan_dirs(output: Path) -> None:
     for rel in [
         "plan/section-blueprints",
+        "plan/agents",
         "plan/review",
         "tables",
         "figures",
@@ -310,6 +311,29 @@ def bootstrap_plan_files(output: Path, venue: str, tag: str, release_url: str) -
             - Bibliography style:
             - Artifact / code policy:
             - Rebuttal policy:
+            """
+        ),
+    )
+    write_if_missing(
+        output / "plan" / "agent-workplan.md",
+        textwrap.dedent(
+            """\
+            # Agent Workplan
+
+            ## Mode
+            - multi-agent-enhanced / isolated-pass / single-agent-compact
+
+            ## File Ownership
+            | File or artifact | Owner | Other agents read/write? |
+            |---|---|---|
+
+            ## Dispatch Plan
+            | Agent | Task | Inputs | Output | Blocking? |
+            |---|---|---|---|---|
+
+            ## Synthesis Decisions
+            | Issue | Raised by | Decision | Manuscript action |
+            |---|---|---|---|
             """
         ),
     )

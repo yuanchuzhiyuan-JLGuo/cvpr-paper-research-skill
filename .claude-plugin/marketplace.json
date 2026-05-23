@@ -4,8 +4,8 @@
     "name": "JL Guo",
     "email": "1961184386@qq.com"
   },
-  "description": "Marketplace for the CVPR Paper Writing Claude Code plugin.",
-  "version": "0.3.0",
+  "description": "Marketplace for the Top-Conference Paper Writing Claude Code plugin.",
+  "version": "0.4.0",
   "plugins": [
     {
       "name": "cvpr-paper-writing-skill",
@@ -13,10 +13,10 @@
       "source": {
         "source": "github",
         "repo": "1961184386/cvpr-paper-writing-skill",
-        "ref": "v0.3.0"
+        "ref": "v0.4.0"
       },
-      "description": "Write and prepare top-conference papers using official LaTeX templates, Overleaf workflow, experiment gates, integrity audits, and reviewer-risk checks.",
-      "version": "0.3.0",
+      "description": "Write and prepare top-conference papers using official LaTeX templates, multi-agent workflows, Overleaf workflow, experiment gates, integrity audits, and reviewer-risk checks.",
+      "version": "0.4.0",
       "author": {
         "name": "JL Guo",
         "email": "1961184386@qq.com"

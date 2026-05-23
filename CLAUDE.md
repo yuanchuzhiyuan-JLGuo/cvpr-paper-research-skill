@@ -54,8 +54,9 @@ The skill is exposed under the plugin namespace:
 - Do not introduce paper-specific research claims.
 - Keep `main.tex` as the Overleaf root and `paper.tex` as the manuscript body. If the root is adapted, preserve the original as `main_template_original.tex`.
 - Preserve official template integrity; do not encourage manual margin, font, spacing, or `cvpr.sty` edits.
-- Preserve integrity gates and multi-perspective review as lightweight protocols, not mandatory multi-agent orchestration.
-- Do not add hooks, MCP servers, or agents unless the user explicitly requests them.
+- Preserve the multi-agent enhanced workflow for full papers and major reviews, with single-agent fallback for small tasks.
+- Keep reviewer and integrity roles read-only until the orchestrator authorizes a bounded manuscript edit.
+- Do not add hooks or MCP servers unless the user explicitly requests them.
 
 ## Validation Commands
 

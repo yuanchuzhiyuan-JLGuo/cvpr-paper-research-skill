@@ -1,6 +1,6 @@
 ---
 name: cvpr-paper-writing
-description: Use when writing, revising, formatting, or preparing a top-tier conference paper, especially CVPR/ICCV/ECCV/NeurIPS/ICML/ICLR-style submissions, including official template setup, section writing, experiment planning, figure/table design, integrity gates, multi-perspective review, anonymity checks, and submission-readiness review.
+description: Use when writing, revising, formatting, or preparing a top-tier conference paper, especially CVPR/ICCV/ECCV/NeurIPS/ICML/ICLR-style submissions, including official template setup, section writing, experiment planning, figure/table design, multi-agent orchestration, integrity gates, multi-perspective review, anonymity checks, and submission-readiness review.
 ---
 
 # Top-Conference Paper Writing
@@ -18,6 +18,24 @@ Claim -> Evidence -> Experiment/Table/Figure -> Allowed Wording -> Reviewer Risk
 ```
 
 If a link is missing, weaken the claim, add the missing evidence, or move it to limitations/future work.
+
+## Multi-Agent Operating Model
+
+For complete-paper drafting, major revision, final submission checks, or full simulated review, recommend the multi-agent enhanced workflow. Use delegated agents when the user asks for or approves multi-agent work and the platform supports it; otherwise preserve the same role separation as isolated passes. Use single-agent fallback only for small edits, quick explanations, or environments without agent support.
+
+Core roles:
+
+- `orchestrator`: owns the workflow state, user checkpoints, file ownership, and final synthesis.
+- `venue_template_agent`: verifies venue rules, downloads the official template, and preserves the `main.tex` plus `paper.tex` project structure.
+- `positioning_agent`: sharpens problem, gap, contribution boundary, and allowed claim strength.
+- `evidence_agent`: audits citations, related work, and claim-source alignment.
+- `method_experiment_agent`: checks method contract, experiment protocol, baselines, metrics, ablations, and traceability.
+- `draft_editor_agent`: writes or revises `paper.tex` after upstream gates are clear.
+- `integrity_agent`: verifies claims, numbers, configs, citations, and failure modes.
+- `review_panel`: runs independent area-chair, closest-work, methodology, reproducibility, skeptical, and visual/qualitative reviews.
+- `format_agent`: runs static checks, template checks, anonymity checks, and PDF/Overleaf readiness review.
+
+Read `references/multi-agent-orchestration.md` before using delegated agents or a full review panel.
 
 ## Quick Start
 
@@ -151,7 +169,7 @@ Read `references/section-recipes.md`.
 
 Before final polishing:
 
-- Simulate reviewer objections from multiple non-overlapping perspectives.
+- Simulate reviewer objections from multiple non-overlapping perspectives, preferably as independent agents or isolated passes.
 - Audit overclaims.
 - Audit anonymity.
 - Audit reproducibility.
@@ -162,7 +180,7 @@ Output target:
 
 - `plan/review/submission-risk-review.md`
 
-Read `references/reviewer-gate.md` and `references/multi-perspective-review.md`.
+Read `references/reviewer-gate.md`, `references/multi-perspective-review.md`, and `references/multi-agent-orchestration.md`.
 
 ### 8. Revision and Freeze Gate
 
@@ -203,6 +221,7 @@ Load only the needed file:
 
 - `references/latex-overleaf.md`: official template, Overleaf workflow, formatting constraints.
 - `references/top-conference-pipeline.md`: general conference workflow, checkpoints, and artifacts.
+- `references/multi-agent-orchestration.md`: agent roles, dispatch rules, file ownership, and synthesis protocol.
 - `references/section-recipes.md`: paragraph and section-level writing recipes.
 - `references/evidence-and-related-work.md`: citation discipline and related-work synthesis.
 - `references/experiment-and-results.md`: experiment protocol, tables, figures, and result prose.

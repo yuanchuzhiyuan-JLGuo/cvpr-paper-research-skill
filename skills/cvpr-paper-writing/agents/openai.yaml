@@ -1,8 +1,8 @@
 interface:
   display_name: "Top-Conference Paper Writing"
-  short_description: "Write, format, audit, and review top-conference papers in official LaTeX templates."
+  short_description: "Write, format, audit, and review top-conference papers with multi-agent workflows."
   brand_color: "#2563EB"
-  default_prompt: "Use $cvpr-paper-writing to set up an official top-conference paper project and guide the manuscript from claim planning through integrity and submission checks."
+  default_prompt: "Use $cvpr-paper-writing in multi-agent-enhanced mode to set up an official top-conference paper project and guide the manuscript from claim planning through integrity, review, and submission checks."
 
 policy:
   allow_implicit_invocation: true

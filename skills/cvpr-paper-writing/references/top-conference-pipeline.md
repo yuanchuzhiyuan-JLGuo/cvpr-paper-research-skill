@@ -1,6 +1,6 @@
 # Top-Conference Pipeline
 
-This workflow is a lightweight top-conference adaptation of rigorous academic research pipelines. It is intentionally simpler than a full multi-agent research system: it uses checkpoints and artifacts, not mandatory agent orchestration.
+This workflow is a top-conference adaptation of rigorous academic research pipelines. It supports a multi-agent enhanced path for complete-paper work and a compact single-agent path for small edits.
 
 ## Stage Map
 
@@ -16,6 +16,23 @@ This workflow is a lightweight top-conference adaptation of rigorous academic re
 | 7. Multi-perspective review | Simulate top-conference reviewer objections | `plan/review/submission-risk-review.md` | Major risks triaged |
 | 8. Revision | Map issues to edits, experiments, limitations, or rebuttal | `plan/review/revision-roadmap.md` | All major issues addressed or scoped |
 | 9. Freeze and format | Final static checks and PDF inspection | `TEMPLATE_AUDIT.md` + checker output | Template and anonymity pass |
+
+## Agent Map
+
+| Stage | Recommended agent |
+|---|---|
+| 0. Venue profile | `venue_template_agent` |
+| 1. Positioning | `positioning_agent` |
+| 2. Evidence map | `evidence_agent` |
+| 3. Method contract | `method_experiment_agent` |
+| 4. Experiment contract | `method_experiment_agent` |
+| 5. Draft | `draft_editor_agent` |
+| 6. Integrity audit | `integrity_agent` |
+| 7. Multi-perspective review | `review_panel` |
+| 8. Revision | `orchestrator` + `draft_editor_agent` |
+| 9. Freeze and format | `format_agent` |
+
+For full submissions, create `plan/agent-workplan.md` and follow `multi-agent-enhanced` mode in `multi-agent-orchestration.md`.
 
 ## Checkpoint Rule
 

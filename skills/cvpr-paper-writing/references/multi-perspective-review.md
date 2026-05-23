@@ -1,10 +1,10 @@
 # Multi-Perspective Review
 
-Use this to simulate top-conference review without requiring multiple agents. Run each perspective independently in separate passes when possible, and keep review outputs read-only.
+Use this to simulate top-conference review with a true multi-agent panel when possible. If agent tooling is unavailable, run each perspective as an isolated pass and keep outputs separate until synthesis.
 
 ## Review Panel
 
-Configure 4-6 perspectives depending on the paper:
+Configure 4-7 perspectives depending on the paper:
 
 | Perspective | Primary questions |
 |---|---|
@@ -16,6 +16,22 @@ Configure 4-6 perspectives depending on the paper:
 | Cross-area reviewer | Does the paper connect to adjacent communities or miss obvious framing? |
 
 For CVPR-style papers, include a visual/qualitative reviewer when the paper depends on images, videos, figures, or demos.
+
+## Multi-Agent Dispatch
+
+When using delegated agents, assign each reviewer one perspective only:
+
+| Reviewer file | Perspective |
+|---|---|
+| `plan/review/reviewer-area-chair.md` | Area chair / meta-reviewer |
+| `plan/review/reviewer-closest-work.md` | Closest-work reviewer |
+| `plan/review/reviewer-methodology.md` | Methodology reviewer |
+| `plan/review/reviewer-reproducibility.md` | Reproducibility reviewer |
+| `plan/review/reviewer-skeptical.md` | Skeptical reviewer |
+| `plan/review/reviewer-visual.md` | Visual/qualitative reviewer |
+| `plan/review/reviewer-cross-area.md` | Cross-area reviewer |
+
+Do not let reviewers coordinate before writing their reports. The value comes from independent failure finding.
 
 ## Read-Only Rule
 

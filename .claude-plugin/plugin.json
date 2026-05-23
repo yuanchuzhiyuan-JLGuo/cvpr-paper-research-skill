@@ -1,8 +1,8 @@
 {
   "name": "cvpr-paper-writing-skill",
   "displayName": "Top-Conference Paper Writing Skill",
-  "description": "Skills and scripts for writing top-conference papers in official LaTeX templates with Overleaf, experiment, integrity, and reviewer-risk checks.",
-  "version": "0.3.0",
+  "description": "Skills and scripts for writing top-conference papers in official LaTeX templates with multi-agent workflows, Overleaf, experiment, integrity, and reviewer-risk checks.",
+  "version": "0.4.0",
   "author": {
     "name": "JL Guo",
     "email": "1961184386@qq.com"
