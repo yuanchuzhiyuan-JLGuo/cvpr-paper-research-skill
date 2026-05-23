@@ -1,12 +1,12 @@
 # LaTeX and Overleaf
 
-Use the official template as the source of truth. The current official CVPR/ICCV/3DV author kit is maintained at:
+Use the official template as the source of truth. For CVPR/ICCV/3DV, the current official author kit is maintained at:
 
 ```text
 https://github.com/cvpr-org/author-kit
 ```
 
-The setup script downloads the latest GitHub release. If a target venue/year provides a separate author kit page, use that official page instead.
+The setup script downloads the latest CVPR GitHub release by default. If another target venue/year provides a separate author kit page, verify that official page and pass its LaTeX zip URL with `--template-url`.
 
 ## Official Template Workflow
 
@@ -15,6 +15,14 @@ The setup script downloads the latest GitHub release. If a target venue/year pro
 ```powershell
 python skills/cvpr-paper-writing/scripts/setup_official_template.py --output paper_cvpr --venue CVPR
 ```
+
+For a non-CVPR venue with an official zip:
+
+```powershell
+python skills/cvpr-paper-writing/scripts/setup_official_template.py --output paper_topconf --venue NeurIPS --template-url <official-template-zip-url>
+```
+
+The script should produce a complete paper project that still contains the original template files. It adds `paper.tex` for the manuscript body and saves the untouched original root as `main_template_original.tex` when it needs to connect `main.tex` to `paper.tex`.
 
 2. Edit the generated files:
 
@@ -33,7 +41,7 @@ paper_cvpr/main.bib
 
 ## Root File and Body File
 
-Use this structure:
+For CVPR-style projects, use this structure:
 
 ```text
 main.tex   = official root file, package mode, title/authors, \maketitle, \input{paper}, bibliography
@@ -44,31 +52,33 @@ preamble.tex = allowed packages/macros before hyperref
 
 Do not set `paper.tex` as the Overleaf root. `paper.tex` is intentionally not standalone; it is included by `main.tex` so the official template controls formatting.
 
+For non-CVPR templates, keep the same root/body separation when possible. If the official template requires a different root file, preserve the official root, copy or expose it as `main.tex` for Overleaf when needed, and include `paper.tex` from it. Keep the original root backup in the project so the author can inspect venue-specific formatting requirements.
+
 ## Review vs Camera-Ready
 
-Review submission:
+CVPR-style review submission:
 
 ```latex
 \usepackage[review]{cvpr}
 ```
 
-Camera-ready:
+CVPR-style camera-ready:
 
 ```latex
 \usepackage{cvpr}
 ```
 
-arXiv/preprint with page numbers:
+CVPR-style arXiv/preprint with page numbers:
 
 ```latex
 \usepackage[pagenumbers]{cvpr}
 ```
 
-Do not submit camera-ready mode to anonymous review unless the venue explicitly requests it.
+Do not submit camera-ready mode to anonymous review unless the venue explicitly requests it. For other venues, follow their official review/camera-ready switches.
 
 ## Template Files To Preserve
 
-Keep these files unless the official kit changes:
+Keep every file from the official kit unless the venue instructions say otherwise. For CVPR-style kits, this includes:
 
 - `cvpr.sty`
 - `main.tex`
@@ -77,6 +87,7 @@ Keep these files unless the official kit changes:
 - `main.bib`
 - `ieeenat_fullname.bst`
 - `sec/`
+- `main_template_original.tex` when the setup script needed to adapt the root file
 
 Do not replace `cvpr.sty` with an older local copy.
 

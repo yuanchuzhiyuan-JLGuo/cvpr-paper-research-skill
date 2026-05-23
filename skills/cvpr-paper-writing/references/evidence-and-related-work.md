@@ -1,6 +1,6 @@
 # Evidence and Related Work
 
-Use this reference for Introduction, Related Work, and any claim that depends on prior work.
+Use this reference for Introduction, Related Work, and any claim that depends on prior work. Pair it with `integrity-gates.md` when checking whether cited sources truly support the manuscript's claims.
 
 ## Evidence Map
 

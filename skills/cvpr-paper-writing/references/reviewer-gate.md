@@ -1,6 +1,6 @@
 # Reviewer Gate
 
-Use this before final polishing and before rebuttal planning.
+Use this before final polishing and before rebuttal planning. Pair it with `multi-perspective-review.md` when a full top-conference risk pass is needed.
 
 ## Simulated Reviewer Questions
 
@@ -16,6 +16,9 @@ Use this before final polishing and before rebuttal planning.
 10. Are limitations and failure cases visible?
 11. Is the method reproducible from the description?
 12. Is the submission anonymous and template-compliant?
+13. Do all numerical and factual claims pass the integrity audit?
+14. Can a reviewer understand the paper's problem, gap, and evidence from the first two pages?
+15. What is the strongest objection a skeptical reviewer would raise?
 
 ## Major Risk Triggers
 
@@ -29,6 +32,9 @@ Treat these as high-severity:
 - hand-wavy implementation details;
 - introduction promises more than experiments show;
 - related work misses a directly competing line;
+- reported result is untraceable to logs, tables, scripts, or user-provided records;
+- Methods text drifts from actual configs, datasets, or runs;
+- the strongest likely reviewer objection is absent from the paper;
 - figures unreadable at print size;
 - tables omit variance when results are noisy;
 - anonymous submission leaks author identity, institution, acknowledgments, repository names, or private paths;
@@ -63,6 +69,10 @@ Create `plan/review/submission-risk-review.md`:
 ## Experiment Audit
 | Contribution | Baseline | Metric | Ablation | Status |
 |---|---|---|---|---|
+
+## Integrity Audit
+| Claim/result/config item | Evidence | Verdict | Required action |
+|---|---|---|---|
 
 ## Format and Anonymity Audit
 | Item | Status | Fix |

@@ -1,6 +1,6 @@
 # Experiment and Results
 
-Use this reference before writing any Results, Discussion, or claim-bearing caption.
+Use this reference before writing any Results, Discussion, or claim-bearing caption. Pair it with `integrity-gates.md` before treating any result as submission-ready.
 
 ## Experiment Protocol
 
@@ -142,4 +142,5 @@ The method does not improve [metric] under [condition], indicating that [module/
 | Metrics | primary and secondary metrics |
 | Qualitative | representative and failure cases |
 | Reproducibility | configs, hardware, training details |
+| Integrity | each result traceable to logs, data, configs, or user-provided records |
 | Statistics | mean/std or confidence where appropriate |

@@ -4,7 +4,7 @@ This file guides Claude Code when working in this repository.
 
 ## Repository Type
 
-This is a Claude Code and Codex plugin repository, not an application service. The main deliverable is a reusable writing skill:
+This is a Claude Code and Codex plugin repository, not an application service. The main deliverable is a reusable top-conference writing skill:
 
 ```text
 skills/cvpr-paper-writing/SKILL.md
@@ -50,10 +50,11 @@ The skill is exposed under the plugin namespace:
 
 ## Rules To Preserve
 
-- Keep this skill generic to top-conference computer vision papers.
+- Keep this skill generic to top-conference papers, with computer vision as the default example domain.
 - Do not introduce paper-specific research claims.
-- Keep `main.tex` as the Overleaf root and `paper.tex` as the manuscript body.
+- Keep `main.tex` as the Overleaf root and `paper.tex` as the manuscript body. If the root is adapted, preserve the original as `main_template_original.tex`.
 - Preserve official template integrity; do not encourage manual margin, font, spacing, or `cvpr.sty` edits.
+- Preserve integrity gates and multi-perspective review as lightweight protocols, not mandatory multi-agent orchestration.
 - Do not add hooks, MCP servers, or agents unless the user explicitly requests them.
 
 ## Validation Commands

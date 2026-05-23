@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static checks for a CVPR-style LaTeX paper directory."""
+"""Static checks for a top-conference LaTeX paper directory."""
 
 from __future__ import annotations
 
@@ -94,29 +94,40 @@ def add_issue(issues: list[tuple[str, str, str]], severity: str, path: str, msg:
     issues.append((severity, path, msg))
 
 
-def check_required_files(root: Path, issues: list[tuple[str, str, str]]) -> None:
-    for rel in ["main.tex", "cvpr.sty", "preamble.tex", "main.bib", "ieeenat_fullname.bst"]:
+def is_cvpr_style(root: Path, main_text: str) -> bool:
+    return (root / "cvpr.sty").exists() or "usepackage[review]{cvpr}" in main_text or "usepackage{cvpr}" in main_text
+
+
+def check_required_files(root: Path, issues: list[tuple[str, str, str]], cvpr_style: bool) -> None:
+    for rel in ["main.tex", "paper.tex"]:
         if not (root / rel).exists():
-            add_issue(issues, "ERROR", rel, "required official template file is missing")
+            add_issue(issues, "ERROR", rel, "required paper project file is missing")
+
+    if not cvpr_style:
+        return
+
+    for rel in ["cvpr.sty", "preamble.tex", "main.bib", "ieeenat_fullname.bst"]:
+        if not (root / rel).exists():
+            add_issue(issues, "ERROR", rel, "required CVPR-style official template file is missing")
     if not (root / "sec").exists():
-        add_issue(issues, "ERROR", "sec/", "section directory is missing")
+        add_issue(issues, "WARN", "sec/", "CVPR author-kit section directory is missing")
 
 
-def check_main(root: Path, issues: list[tuple[str, str, str]]) -> None:
+def check_main(root: Path, issues: list[tuple[str, str, str]], cvpr_style: bool) -> None:
     main = root / "main.tex"
     text = read(main)
     if not text:
         return
 
-    if "\\usepackage[review]{cvpr}" not in text:
+    if cvpr_style and "\\usepackage[review]{cvpr}" not in text:
         add_issue(issues, "WARN", "main.tex", "review mode not detected; check whether this is intended")
-    if "\\usepackage{cvpr}" in text and "\\usepackage[review]{cvpr}" not in text:
+    if cvpr_style and "\\usepackage{cvpr}" in text and "\\usepackage[review]{cvpr}" not in text:
         add_issue(issues, "WARN", "main.tex", "camera-ready mode detected; do not use for anonymous review")
-    if "ieeenat_fullname" not in text:
+    if cvpr_style and "ieeenat_fullname" not in text:
         add_issue(issues, "WARN", "main.tex", "template bibliography style not detected")
     if "\\input{sec/X_suppl}" in text and "% \\input{sec/X_suppl}" not in text:
         add_issue(issues, "WARN", "main.tex", "supplement input appears enabled in main PDF")
-    if "\\def\\paperID{*****}" in text:
+    if cvpr_style and "\\def\\paperID{*****}" in text:
         add_issue(issues, "WARN", "main.tex", "paper ID placeholder is still present")
     if "\\input{paper}" not in text:
         add_issue(issues, "WARN", "main.tex", "`\\input{paper}` not detected; expected body file workflow")
@@ -198,9 +209,11 @@ def main() -> int:
 
     root = Path(args.paper_dir).resolve()
     issues: list[tuple[str, str, str]] = []
+    main_text = read(root / "main.tex")
+    cvpr_style = is_cvpr_style(root, main_text)
 
-    check_required_files(root, issues)
-    check_main(root, issues)
+    check_required_files(root, issues, cvpr_style)
+    check_main(root, issues, cvpr_style)
     check_forbidden_packages(root, issues)
     check_todos(root, issues)
     check_anonymity(root, issues)

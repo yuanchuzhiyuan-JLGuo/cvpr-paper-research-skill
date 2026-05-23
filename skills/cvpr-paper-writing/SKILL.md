@@ -1,11 +1,13 @@
 ---
 name: cvpr-paper-writing
-description: Use when writing, revising, formatting, or preparing a CVPR/ICCV/ECCV-style computer vision conference paper in LaTeX or Overleaf, including official template setup, section writing, experiment planning, figure/table design, anonymity checks, and submission-readiness review.
+description: Use when writing, revising, formatting, or preparing a top-tier conference paper, especially CVPR/ICCV/ECCV/NeurIPS/ICML/ICLR-style submissions, including official template setup, section writing, experiment planning, figure/table design, integrity gates, multi-perspective review, anonymity checks, and submission-readiness review.
 ---
 
-# CVPR Paper Writing
+# Top-Conference Paper Writing
 
-This skill turns a computer vision research idea into a submission-ready conference paper using the official LaTeX template. It combines writing structure, evidence discipline, experiment design, reviewer-risk checks, and Overleaf-ready formatting.
+This skill turns a research idea into a submission-ready top-conference paper. It is optimized for computer vision by default, but the workflow generalizes to ML/AI venues such as CVPR, ICCV, ECCV, NeurIPS, ICML, ICLR, ACL, EMNLP, SIGGRAPH, and related selective conferences.
+
+CVPR-style official LaTeX setup is built in. For other venues, use the same workflow with the venue's official template or a user-provided official template zip URL.
 
 ## Core Principle
 
@@ -19,10 +21,16 @@ If a link is missing, weaken the claim, add the missing evidence, or move it to 
 
 ## Quick Start
 
-1. Set up the official template:
+1. Set up the official template. For CVPR/ICCV/3DV-style papers:
 
 ```powershell
 python skills/cvpr-paper-writing/scripts/setup_official_template.py --output paper_cvpr --venue CVPR
+```
+
+For another venue with an official LaTeX zip, first verify the conference's official author-kit page, then pass its zip URL:
+
+```powershell
+python skills/cvpr-paper-writing/scripts/setup_official_template.py --output paper_topconf --venue NeurIPS --template-url <official-template-zip-url>
 ```
 
 2. Inspect the generated template notes:
@@ -44,18 +52,19 @@ python skills/cvpr-paper-writing/scripts/check_submission_static.py --paper-dir 
 
 ## Required Workflow
 
-### 1. Template Gate
+### 1. Venue and Template Gate
 
-Use the latest official template unless the user specifies a target year or venue kit.
+Use the latest official template unless the user specifies a target year or venue kit. Never recreate conference formatting by hand.
 
-- Download from the official `cvpr-org/author-kit` GitHub release.
-- Preserve `cvpr.sty`, `main.tex`, `preamble.tex`, `ieeenat_fullname.bst`, `main.bib`, and `sec/`.
-- Add `paper.tex` as the manuscript body file.
-- Keep `main.tex` as the Overleaf root file; it should load the official style, title/authors, `\maketitle`, `\input{paper}`, and bibliography.
-- Keep review mode for anonymous submissions.
+- For CVPR/ICCV/3DV, download from the official `cvpr-org/author-kit` GitHub release.
+- For other venues, use the venue's official author kit or an official template URL supplied by the user.
+- Preserve all original template files. For CVPR-style kits, that includes `cvpr.sty`, `main.tex`, `preamble.tex`, `ieeenat_fullname.bst`, `main.bib`, and `sec/`.
+- Add `paper.tex` as the manuscript body file instead of replacing the official template project.
+- Keep `main.tex` as the Overleaf root file. If the setup script edits it, it must save the original as `main_template_original.tex` and make only the minimal `\input{paper}` connection needed for compilation.
+- Keep review mode for anonymous submissions, using the official venue switch.
 - Do not manually recreate margins, columns, fonts, or page-number behavior.
 
-Read `references/latex-overleaf.md` for template and Overleaf rules.
+Read `references/latex-overleaf.md` and `references/top-conference-pipeline.md`.
 
 ### 2. Positioning Gate
 
@@ -105,7 +114,25 @@ Output targets:
 
 Read `references/experiment-and-results.md`.
 
-### 5. Section Writing Gate
+### 5. Integrity Gate
+
+Before treating a draft as submission-ready:
+
+- Extract all numerical, factual, comparison, and causality claims.
+- Trace each result number to a log, table, script, or user-provided data source.
+- Check that Methods text matches actual configs, datasets, training runs, and evaluation scripts.
+- Check for shortcut explanations, proxy-metric overreach, missing baselines, and hidden failure cases.
+- Convert unsupported claims into limitations or remove them.
+
+Output targets:
+
+- `plan/review/claim-registry.md`
+- `plan/review/result-ledger.md`
+- `plan/review/integrity-audit.md`
+
+Read `references/integrity-gates.md`.
+
+### 6. Section Writing Gate
 
 Write section text in `paper.tex`, which is included by the official root `main.tex`.
 
@@ -120,11 +147,11 @@ Use section recipes:
 
 Read `references/section-recipes.md`.
 
-### 6. Reviewer Gate
+### 7. Multi-Perspective Reviewer Gate
 
 Before final polishing:
 
-- Simulate reviewer objections.
+- Simulate reviewer objections from multiple non-overlapping perspectives.
 - Audit overclaims.
 - Audit anonymity.
 - Audit reproducibility.
@@ -135,9 +162,18 @@ Output target:
 
 - `plan/review/submission-risk-review.md`
 
-Read `references/reviewer-gate.md`.
+Read `references/reviewer-gate.md` and `references/multi-perspective-review.md`.
 
-## CVPR-Style Writing Rules
+### 8. Revision and Freeze Gate
+
+After review:
+
+- Create a revision roadmap that maps each issue to a manuscript edit, experiment, limitation, or rebuttal.
+- Re-run integrity checks on changed sections.
+- Freeze content before final formatting.
+- Run static checks and inspect the compiled PDF.
+
+## Top-Conference Writing Rules
 
 - Lead with the technical problem, not a broad field essay.
 - Use exact technical nouns and concrete verbs.
@@ -149,28 +185,32 @@ Read `references/reviewer-gate.md`.
 
 ## LaTeX Rules
 
-- Keep `\documentclass[10pt,twocolumn,letterpaper]{article}` unless the official template changes.
+- For CVPR/ICCV/3DV templates, keep `\documentclass[10pt,twocolumn,letterpaper]{article}` unless the official template changes.
 - Use `\usepackage[review]{cvpr}` for review submissions.
 - Use `\usepackage{cvpr}` only for camera-ready.
 - Use `\usepackage[pagenumbers]{cvpr}` only for arXiv or explicitly requested variants.
-- Keep `\input{paper}` in `main.tex`; do not make `paper.tex` a second standalone root unless explicitly creating a separate variant.
+- Keep `\input{paper}` in the working root file; do not make `paper.tex` a second standalone root unless explicitly creating a separate variant.
 - Keep `hyperref` unless validation problems require disabling it.
 - Use `\cref{}`/`\Cref{}` for cross-references if the template supports it.
 - Put table captions above tables and figure captions below figures.
 - Avoid custom margin, font, spacing, caption, or geometry packages unless the official kit permits them.
 - Do not include supplementary pages in the main submission PDF unless the venue instructions allow it.
+- For non-CVPR venues, follow the official template's equivalent review/camera-ready switches and bibliography rules.
 
 ## Bundled References
 
 Load only the needed file:
 
 - `references/latex-overleaf.md`: official template, Overleaf workflow, formatting constraints.
+- `references/top-conference-pipeline.md`: general conference workflow, checkpoints, and artifacts.
 - `references/section-recipes.md`: paragraph and section-level writing recipes.
 - `references/evidence-and-related-work.md`: citation discipline and related-work synthesis.
 - `references/experiment-and-results.md`: experiment protocol, tables, figures, and result prose.
+- `references/integrity-gates.md`: claim, result, config, and failure-mode audits.
+- `references/multi-perspective-review.md`: top-conference simulated review perspectives and revision roadmap.
 - `references/reviewer-gate.md`: pre-submission checklist and simulated review.
 
 ## Bundled Scripts
 
-- `scripts/setup_official_template.py`: downloads the latest official author kit, expands it, creates planning folders, and writes `TEMPLATE_AUDIT.md`.
+- `scripts/setup_official_template.py`: downloads the latest CVPR author kit or a user-provided official template zip, expands it, creates planning folders, and writes `TEMPLATE_AUDIT.md`.
 - `scripts/check_submission_static.py`: performs static checks for template files, review mode, forbidden formatting packages, unresolved TODOs, anonymous submission leaks, and common LaTeX issues.

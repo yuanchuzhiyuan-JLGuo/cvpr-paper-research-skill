@@ -1,7 +1,7 @@
 {
   "name": "cvpr-paper-writing-skill",
-  "version": "0.2.0",
-  "description": "Codex plugin for writing CVPR/ICCV/ECCV-style papers in the official LaTeX template with Overleaf, experiment, and reviewer-risk checks.",
+  "version": "0.3.0",
+  "description": "Codex plugin for writing top-conference papers in official LaTeX templates with Overleaf, experiment, integrity, and reviewer-risk checks.",
   "author": {
     "name": "JL Guo",
     "email": "1961184386@qq.com",
@@ -22,9 +22,9 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "CVPR Paper Writing Skill",
-    "shortDescription": "Write and format CVPR-style papers in the official LaTeX template.",
-    "longDescription": "A Codex skill/plugin for CVPR/ICCV/ECCV paper writing: official author-kit setup, main.tex plus paper.tex workflow, Overleaf formatting, claim/evidence/experiment traceability, and submission checks.",
+    "displayName": "Top-Conference Paper Writing Skill",
+    "shortDescription": "Write and format top-conference papers in official LaTeX templates.",
+    "longDescription": "A Codex skill/plugin for top-conference paper writing: official template setup, main.tex plus paper.tex workflow, Overleaf formatting, claim/evidence/experiment traceability, integrity gates, multi-perspective review, and submission checks.",
     "developerName": "JL Guo",
     "category": "Productivity",
     "capabilities": [
@@ -35,8 +35,8 @@
     "websiteURL": "https://github.com/1961184386/cvpr-paper-writing-skill",
     "defaultPrompt": [
       "Set up an official CVPR LaTeX paper project.",
-      "Review this CVPR paper for claim and experiment gaps.",
-      "Draft a CVPR-style introduction in paper.tex."
+      "Review this top-conference paper for claim gaps.",
+      "Draft a top-conference introduction in paper.tex."
     ],
     "brandColor": "#2563EB"
   }

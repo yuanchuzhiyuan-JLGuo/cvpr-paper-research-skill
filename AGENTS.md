@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This repository is a cross-platform Codex and Claude Code skill/plugin for CVPR/ICCV/ECCV-style paper writing.
+This repository is a cross-platform Codex and Claude Code skill/plugin for top-conference paper writing. CVPR remains the built-in template path; other venues use official author-kit URLs.
 
 ## Purpose
 
@@ -16,6 +16,8 @@ It guides agents through:
 - Overleaf workflow with `main.tex` as root and `paper.tex` as the manuscript body;
 - section-level writing from abstract through conclusion;
 - claim/evidence/experiment/reviewer-risk traceability;
+- integrity gates for claims, citations, results, and method/config consistency;
+- multi-perspective top-conference review as a lightweight protocol, not mandatory agent orchestration;
 - static checks for template misuse, anonymity leaks, unresolved TODOs, labels, and missing figures.
 
 ## Platform Entry Points
@@ -38,11 +40,11 @@ CLAUDE.md
 ## Invariants
 
 - Keep the skill generic. Do not add project-specific paper claims or method names.
-- Preserve the `main.tex` plus `paper.tex` workflow.
+- Preserve the official-template plus `paper.tex` workflow. If `main.tex` is adapted for compilation, keep `main_template_original.tex`.
 - Do not add multi-agent orchestration unless explicitly requested.
 - Keep `SKILL.md` concise and move details into `references/`.
 - Keep scripts deterministic and free of third-party Python dependencies.
-- Update `VERSION`, `.codex-plugin/plugin.json`, `.claude-plugin/plugin.json`, and `.claude-plugin/marketplace.json` together on release.
+- Update `VERSION`, `README.md`, `.codex-plugin/plugin.json`, `.claude-plugin/plugin.json`, and `.claude-plugin/marketplace.json` together on release.
 
 ## Validation
 

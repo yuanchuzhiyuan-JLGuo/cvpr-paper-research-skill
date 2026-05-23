@@ -1,13 +1,17 @@
-# CVPR Paper Writing Skill
+# Top-Conference Paper Writing Skill
 
-A cross-platform Codex and Claude Code skill/plugin for writing and preparing CVPR/ICCV/ECCV-style computer vision papers in the official LaTeX author-kit workflow.
+A cross-platform Codex and Claude Code skill/plugin for writing and preparing top-tier conference papers, especially CVPR/ICCV/ECCV/NeurIPS/ICML/ICLR-style submissions, using official LaTeX templates and rigorous evidence gates.
 
 The skill covers:
 
 - official CVPR/ICCV/3DV LaTeX template setup from `cvpr-org/author-kit`;
+- user-provided official LaTeX zip setup for a specified conference or year;
 - Overleaf workflow with `main.tex` as the root and `paper.tex` as the manuscript body;
+- preservation of the original author kit, with `main_template_original.tex` saved when the working root is adapted;
 - section-level writing recipes from abstract to conclusion;
 - claim/evidence/experiment/reviewer-risk traceability;
+- integrity gates for result, claim, citation, and method/config consistency;
+- multi-perspective simulated top-conference review;
 - experiment, table, figure, baseline, and ablation planning;
 - static checks for template misuse, anonymity leaks, unresolved TODOs, labels, and missing figures.
 
@@ -72,6 +76,12 @@ To create an Overleaf-ready paper folder:
 python skills/cvpr-paper-writing/scripts/setup_official_template.py --output paper_cvpr --venue CVPR
 ```
 
+For another venue with an official LaTeX zip:
+
+```bash
+python skills/cvpr-paper-writing/scripts/setup_official_template.py --output paper_topconf --venue NeurIPS --template-url <official-template-zip-url>
+```
+
 To run static submission checks:
 
 ```bash
@@ -94,4 +104,4 @@ CLAUDE.md
 
 ## Version
 
-Current release: `v0.2.0`.
+Current release: `v0.3.0`.
