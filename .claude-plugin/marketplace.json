@@ -1,0 +1,48 @@
+{
+  "name": "cvpr-paper-writing",
+  "owner": {
+    "name": "JL Guo",
+    "email": "1961184386@qq.com"
+  },
+  "description": "Marketplace for the CVPR Paper Writing Claude Code plugin.",
+  "version": "0.2.0",
+  "plugins": [
+    {
+      "name": "cvpr-paper-writing-skill",
+      "displayName": "CVPR Paper Writing Skill",
+      "source": {
+        "source": "github",
+        "repo": "1961184386/cvpr-paper-writing-skill",
+        "ref": "v0.2.0"
+      },
+      "description": "Write and prepare CVPR/ICCV/ECCV-style papers using the official LaTeX template, Overleaf workflow, experiment gates, and reviewer-risk checks.",
+      "version": "0.2.0",
+      "author": {
+        "name": "JL Guo",
+        "email": "1961184386@qq.com"
+      },
+      "homepage": "https://github.com/1961184386/cvpr-paper-writing-skill",
+      "repository": "https://github.com/1961184386/cvpr-paper-writing-skill",
+      "license": "MIT",
+      "category": "Writing",
+      "tags": [
+        "cvpr",
+        "iccv",
+        "eccv",
+        "latex",
+        "overleaf",
+        "research-writing"
+      ],
+      "keywords": [
+        "cvpr",
+        "iccv",
+        "eccv",
+        "computer-vision",
+        "latex",
+        "overleaf",
+        "paper-writing",
+        "research-writing"
+      ]
+    }
+  ]
+}

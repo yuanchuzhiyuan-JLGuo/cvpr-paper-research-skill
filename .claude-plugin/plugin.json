@@ -1,0 +1,24 @@
+{
+  "name": "cvpr-paper-writing-skill",
+  "displayName": "CVPR Paper Writing Skill",
+  "description": "Skills and scripts for writing CVPR/ICCV/ECCV-style papers in the official LaTeX template with Overleaf, experiment, and reviewer-risk checks.",
+  "version": "0.2.0",
+  "author": {
+    "name": "JL Guo",
+    "email": "1961184386@qq.com"
+  },
+  "homepage": "https://github.com/1961184386/cvpr-paper-writing-skill",
+  "repository": "https://github.com/1961184386/cvpr-paper-writing-skill",
+  "license": "MIT",
+  "keywords": [
+    "cvpr",
+    "iccv",
+    "eccv",
+    "computer-vision",
+    "latex",
+    "overleaf",
+    "paper-writing",
+    "research-writing"
+  ],
+  "skills": "./skills/"
+}
