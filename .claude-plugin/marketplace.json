@@ -4,25 +4,25 @@
     "name": "JL Guo",
     "email": "1961184386@qq.com"
   },
-  "description": "Marketplace for the Top-Conference Paper Writing Claude Code plugin.",
-  "version": "0.4.0",
+  "description": "Marketplace for the CVPR Paper Research Claude Code plugin.",
+  "version": "0.4.1",
   "plugins": [
     {
-      "name": "cvpr-paper-writing-skill",
-      "displayName": "Top-Conference Paper Writing Skill",
+      "name": "cvpr-paper-research-skill",
+      "displayName": "CVPR Paper Research Skill",
       "source": {
         "source": "github",
-        "repo": "1961184386/cvpr-paper-writing-skill",
-        "ref": "v0.4.0"
+        "repo": "yuanchuzhiyuan-JLGuo/cvpr-paper-research-skill",
+        "ref": "v0.4.1"
       },
       "description": "Write and prepare top-conference papers using official LaTeX templates, multi-agent workflows, Overleaf workflow, experiment gates, integrity audits, and reviewer-risk checks.",
-      "version": "0.4.0",
+      "version": "0.4.1",
       "author": {
         "name": "JL Guo",
         "email": "1961184386@qq.com"
       },
-      "homepage": "https://github.com/1961184386/cvpr-paper-writing-skill",
-      "repository": "https://github.com/1961184386/cvpr-paper-writing-skill",
+      "homepage": "https://github.com/yuanchuzhiyuan-JLGuo/cvpr-paper-research-skill",
+      "repository": "https://github.com/yuanchuzhiyuan-JLGuo/cvpr-paper-research-skill",
       "license": "MIT",
       "category": "Writing",
       "tags": [

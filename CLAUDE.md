@@ -28,15 +28,15 @@ claude --plugin-dir .
 For marketplace-style installation after publishing:
 
 ```text
-/plugin marketplace add 1961184386/cvpr-paper-writing-skill
-/plugin install cvpr-paper-writing-skill@cvpr-paper-writing
+/plugin marketplace add yuanchuzhiyuan-JLGuo/cvpr-paper-research-skill
+/plugin install cvpr-paper-research-skill@cvpr-paper-writing
 /reload-plugins
 ```
 
 The skill is exposed under the plugin namespace:
 
 ```text
-/cvpr-paper-writing-skill:cvpr-paper-writing
+/cvpr-paper-research-skill:cvpr-paper-writing
 ```
 
 ## Architecture

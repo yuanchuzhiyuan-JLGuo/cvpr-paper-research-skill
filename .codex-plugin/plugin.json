@@ -1,14 +1,14 @@
 {
-  "name": "cvpr-paper-writing-skill",
-  "version": "0.4.0",
+  "name": "cvpr-paper-research-skill",
+  "version": "0.4.1",
   "description": "Codex plugin for writing top-conference papers in official LaTeX templates with multi-agent workflows, Overleaf, experiment, integrity, and reviewer-risk checks.",
   "author": {
     "name": "JL Guo",
     "email": "1961184386@qq.com",
-    "url": "https://github.com/1961184386"
+    "url": "https://github.com/yuanchuzhiyuan-JLGuo"
   },
-  "homepage": "https://github.com/1961184386/cvpr-paper-writing-skill",
-  "repository": "https://github.com/1961184386/cvpr-paper-writing-skill",
+  "homepage": "https://github.com/yuanchuzhiyuan-JLGuo/cvpr-paper-research-skill",
+  "repository": "https://github.com/yuanchuzhiyuan-JLGuo/cvpr-paper-research-skill",
   "license": "MIT",
   "keywords": [
     "cvpr",
@@ -22,7 +22,7 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Top-Conference Paper Writing Skill",
+    "displayName": "CVPR Paper Research Skill",
     "shortDescription": "Write and format top-conference papers in official LaTeX templates.",
     "longDescription": "A Codex skill/plugin for top-conference paper writing: official template setup, main.tex plus paper.tex workflow, multi-agent orchestration, Overleaf formatting, claim/evidence/experiment traceability, integrity gates, multi-perspective review, and submission checks.",
     "developerName": "JL Guo",
@@ -32,7 +32,7 @@
       "Review",
       "Generate"
     ],
-    "websiteURL": "https://github.com/1961184386/cvpr-paper-writing-skill",
+    "websiteURL": "https://github.com/yuanchuzhiyuan-JLGuo/cvpr-paper-research-skill",
     "defaultPrompt": [
       "Set up an official CVPR LaTeX paper project.",
       "Run the multi-agent enhanced workflow for this top-conference paper.",

@@ -24,13 +24,13 @@ REPO_URL = "https://github.com/cvpr-org/author-kit"
 
 
 def fetch_json(url: str) -> dict:
-    req = urllib.request.Request(url, headers={"User-Agent": "cvpr-paper-writing-skill"})
+    req = urllib.request.Request(url, headers={"User-Agent": "cvpr-paper-research-skill"})
     with urllib.request.urlopen(req, timeout=60) as resp:
         return json.loads(resp.read().decode("utf-8"))
 
 
 def download(url: str, dst: Path) -> None:
-    req = urllib.request.Request(url, headers={"User-Agent": "cvpr-paper-writing-skill"})
+    req = urllib.request.Request(url, headers={"User-Agent": "cvpr-paper-research-skill"})
     with urllib.request.urlopen(req, timeout=120) as resp, dst.open("wb") as f:
         shutil.copyfileobj(resp, f)
 

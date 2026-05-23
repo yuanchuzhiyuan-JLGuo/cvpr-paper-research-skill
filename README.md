@@ -1,6 +1,10 @@
-# Top-Conference Paper Writing Skill
+# CVPR Paper Research Skill
 
-A cross-platform Codex and Claude Code skill/plugin for writing and preparing top-tier conference papers, especially CVPR/ICCV/ECCV/NeurIPS/ICML/ICLR-style submissions.
+A cross-platform Codex and Claude Code skill/plugin for researching, writing, and preparing top-tier conference papers, especially CVPR/ICCV/ECCV/NeurIPS/ICML/ICLR-style submissions.
+
+Repository: `yuanchuzhiyuan-JLGuo/cvpr-paper-research-skill`
+
+Skill invocation name: `$cvpr-paper-writing`
 
 It helps you move from a research idea to an Overleaf-ready LaTeX paper project with:
 
@@ -94,7 +98,7 @@ paper_cvpr/
 Install from GitHub with the Codex skill installer:
 
 ```bash
-python scripts/install-skill-from-github.py --repo 1961184386/cvpr-paper-writing-skill --path skills/cvpr-paper-writing
+python scripts/install-skill-from-github.py --repo yuanchuzhiyuan-JLGuo/cvpr-paper-research-skill --path skills/cvpr-paper-writing
 ```
 
 Then restart Codex so the skill is discovered.
@@ -117,15 +121,15 @@ claude --plugin-dir .
 For plugin installation:
 
 ```text
-/plugin marketplace add 1961184386/cvpr-paper-writing-skill
-/plugin install cvpr-paper-writing-skill@cvpr-paper-writing
+/plugin marketplace add yuanchuzhiyuan-JLGuo/cvpr-paper-research-skill
+/plugin install cvpr-paper-research-skill@cvpr-paper-writing
 /reload-plugins
 ```
 
 The skill is exposed as:
 
 ```text
-/cvpr-paper-writing-skill:cvpr-paper-writing
+/cvpr-paper-research-skill:cvpr-paper-writing
 ```
 
 ## Start A New Paper
@@ -328,4 +332,4 @@ python .\skills\cvpr-paper-writing\scripts\check_submission_static.py --paper-di
 
 ## Current Release
 
-`v0.4.0`
+`v0.4.1`

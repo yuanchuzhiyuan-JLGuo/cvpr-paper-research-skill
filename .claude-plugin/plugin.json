@@ -1,14 +1,14 @@
 {
-  "name": "cvpr-paper-writing-skill",
-  "displayName": "Top-Conference Paper Writing Skill",
+  "name": "cvpr-paper-research-skill",
+  "displayName": "CVPR Paper Research Skill",
   "description": "Skills and scripts for writing top-conference papers in official LaTeX templates with multi-agent workflows, Overleaf, experiment, integrity, and reviewer-risk checks.",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": {
     "name": "JL Guo",
     "email": "1961184386@qq.com"
   },
-  "homepage": "https://github.com/1961184386/cvpr-paper-writing-skill",
-  "repository": "https://github.com/1961184386/cvpr-paper-writing-skill",
+  "homepage": "https://github.com/yuanchuzhiyuan-JLGuo/cvpr-paper-research-skill",
+  "repository": "https://github.com/yuanchuzhiyuan-JLGuo/cvpr-paper-research-skill",
   "license": "MIT",
   "keywords": [
     "cvpr",
