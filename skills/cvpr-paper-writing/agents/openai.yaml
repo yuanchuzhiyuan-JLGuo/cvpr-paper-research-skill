@@ -1,0 +1,8 @@
+interface:
+  display_name: "CVPR Paper Writing"
+  short_description: "Write, format, and review CVPR-style papers in the official LaTeX template."
+  brand_color: "#2563EB"
+  default_prompt: "Use $cvpr-paper-writing to set up an official CVPR LaTeX paper project and guide the manuscript from claim planning through submission checks."
+
+policy:
+  allow_implicit_invocation: true
