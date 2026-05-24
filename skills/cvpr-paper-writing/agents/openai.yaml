@@ -1,8 +1,8 @@
 interface:
   display_name: "Top-Conference Paper Writing"
-  short_description: "Write, format, audit, and review top-conference papers with multi-agent workflows."
+  short_description: "Run research-to-paper workflows: baselines, experiments, results, writing, and review."
   brand_color: "#2563EB"
-  default_prompt: "Use $cvpr-paper-writing in multi-agent-enhanced mode to set up an official top-conference paper project and guide the manuscript from claim planning through integrity, review, and submission checks."
+  default_prompt: "Use $cvpr-paper-writing in research-experiment-paper mode to survey baselines/datasets, ingest existing results, plan and run experiments, generate figures/tables, and draft a top-conference paper."
 
 policy:
   allow_implicit_invocation: true

@@ -1,6 +1,6 @@
 ---
 name: cvpr-paper-writing
-description: Use when writing, revising, formatting, or preparing a top-tier conference paper, especially CVPR/ICCV/ECCV/NeurIPS/ICML/ICLR-style submissions, including official template setup, section writing, experiment planning, figure/table design, multi-agent orchestration, integrity gates, multi-perspective review, anonymity checks, and submission-readiness review.
+description: Use when writing, revising, formatting, or preparing a top-tier conference paper, especially CVPR/ICCV/ECCV/NeurIPS/ICML/ICLR-style submissions, including research-to-paper workflows, recent baseline and dataset surveys, official baseline source discovery, existing result ingestion, compute-aware experiment planning, code/training/evaluation execution, figure/table design, multi-agent orchestration, integrity gates, multi-perspective review, anonymity checks, and submission-readiness review.
 ---
 
 # Top-Conference Paper Writing
@@ -19,6 +19,14 @@ Claim -> Evidence -> Experiment/Table/Figure -> Allowed Wording -> Reviewer Risk
 
 If a link is missing, weaken the claim, add the missing evidence, or move it to limitations/future work.
 
+Treat the project as an ongoing research codebase, not a blank notebook. Before designing new experiments or implementing baselines, discover existing code, checkpoints, logs, official baseline repositories, reusable evaluation scripts, and already completed results. Prefer faithful reuse and adaptation over from-scratch reimplementation, and record every deviation.
+
+Distinguish strictly:
+
+- `planned experiment`: designed but not run; never report as a result.
+- `executed experiment`: has raw logs/metrics/configs/checkpoints; may be reported with scope.
+- `submission-grade evidence`: has fair baselines, seeds/statistics, traceable metrics, and reviewer-ready analysis; may support strong claims.
+
 ## Multi-Agent Operating Model
 
 For complete-paper drafting, major revision, final submission checks, or full simulated review, recommend the multi-agent enhanced workflow. Use delegated agents when the user asks for or approves multi-agent work and the platform supports it; otherwise preserve the same role separation as isolated passes. Use single-agent fallback only for small edits, quick explanations, or environments without agent support.
@@ -30,12 +38,21 @@ Core roles:
 - `positioning_agent`: sharpens problem, gap, contribution boundary, and allowed claim strength.
 - `evidence_agent`: audits citations, related work, and claim-source alignment.
 - `method_experiment_agent`: checks method contract, experiment protocol, baselines, metrics, ablations, and traceability.
+- `literature_agent`: surveys recent related work, especially the last three years of directly comparable methods.
+- `baseline_source_agent`: finds official baseline code, checkpoints, licenses, commits, and reproduction status before any reimplementation.
+- `asset_ingestion_agent`: indexes existing code, datasets, configs, checkpoints, logs, metrics, plots, and result ledgers.
+- `compute_agent`: profiles local/server hardware and turns device constraints into a feasible experiment strategy.
+- `implementation_agent`: implements or adapts methods, datasets, wrappers, losses, and evaluation scripts with clear ownership.
+- `experiment_runner_agent`: launches, monitors, resumes, and records training/evaluation jobs.
+- `result_analyst_agent`: aggregates metrics, statistics, LaTeX tables, publication-quality figures, and failure-case panels.
 - `draft_editor_agent`: writes or revises `paper.tex` after upstream gates are clear.
 - `integrity_agent`: verifies claims, numbers, configs, citations, and failure modes.
 - `review_panel`: runs independent area-chair, closest-work, methodology, reproducibility, skeptical, and visual/qualitative reviews.
 - `format_agent`: runs static checks, template checks, anonymity checks, and PDF/Overleaf readiness review.
 
 Read `references/multi-agent-orchestration.md` before using delegated agents or a full review panel.
+
+Use `research-experiment-paper` mode when the user asks the skill to move beyond writing into baseline/dataset discovery, code implementation, training, evaluation, result analysis, and then paper drafting. Read `references/research-experiment-pipeline.md`, `references/baseline-source-and-existing-results.md`, and `references/compute-training-and-results.md` for that mode.
 
 ## Quick Start
 
@@ -69,6 +86,43 @@ python skills/cvpr-paper-writing/scripts/check_submission_static.py --paper-dir 
 ```
 
 ## Required Workflow
+
+### 0. Research-to-Paper Experiment Gate
+
+Use this gate when the user asks for a complete research workflow, automatic experiment design, baseline/data selection, code training, result organization, or "continue from existing experiments."
+
+Before creating new code or experiments:
+
+- Survey the most relevant recent baselines and datasets, prioritizing the last three years when the field is fast-moving.
+- Find official baseline source code, checkpoints, project pages, licenses, and reproducible commands. Prefer official or author-maintained code; only reimplement when no usable source exists, and label it `reimplemented baseline`.
+- Ingest existing assets: repo code, configs, scripts, checkpoints, logs, metrics JSON/CSV, TensorBoard/W&B exports, figures, and prior result ledgers.
+- Ask or infer whether experiments should run locally or on a server. Profile GPUs, CUDA/PyTorch, disk, Python environment, network access, and job runner (`tmux`, `nohup`, Slurm, PowerShell, etc.).
+- Create a compute-aware experiment matrix with smoke, pilot, main, and submission-grade stages.
+- Implement or adapt only the missing method pieces, dataset loaders, baseline wrappers, training/evaluation scripts, and plotting scripts.
+- Run experiments when requested and feasible; otherwise produce exact commands and mark them as planned.
+- Aggregate results into traceable ledgers before drafting claims.
+- Generate top-conference-style tables, plots, qualitative panels, and failure cases from real result files only.
+
+Output targets:
+
+- `plan/research-question.md`
+- `plan/baseline-dataset-survey.md`
+- `baselines/source-registry.md`
+- `baselines/reproduction-log.md`
+- `baselines/adaptation-notes.md`
+- `baselines/license-audit.md`
+- `plan/existing-asset-index.md`
+- `plan/compute-profile.md`
+- `plan/experiment-matrix.yaml`
+- `plan/experiment-runbook.md`
+- `plan/experiment-gap-analysis.md`
+- `plan/method-code-contract.md`
+- `plan/review/result-ledger.md`
+- `analysis/result-summary.md`
+- `tables/*.tex`
+- `figures/*.pdf` or high-resolution `*.png`
+
+Read `references/research-experiment-pipeline.md`, `references/baseline-source-and-existing-results.md`, and `references/compute-training-and-results.md`.
 
 ### 1. Venue and Template Gate
 
@@ -156,8 +210,8 @@ Write section text in `paper.tex`, which is included by the official root `main.
 
 Use section recipes:
 
-- Abstract: 5-7 sentences.
-- Introduction: problem pressure, prior route, unresolved gap, method insight, contributions.
+- Abstract: use the background -> progress -> gap -> insight -> method -> evidence -> implication sequence as a diagnostic scaffold, not a rigid template.
+- Introduction: choose the strongest narrative for the paper. The default four logical roles are background, existing methods and problems, key theoretical/empirical observation, and solution/contributions, but problem-driven, contradiction-driven, observation-driven, system-driven, benchmark-driven, or theory-driven structures are allowed when stronger.
 - Related Work: thematic synthesis with boundaries.
 - Method: auditable definitions, architecture, training, inference.
 - Experiments: setup first, then evidence.
@@ -200,6 +254,9 @@ After review:
 - Captions must say what is measured, under what setting, and what the reader should compare.
 - Results prose should include both improvement and failure/constraint when relevant.
 - Do not let process notes, TODOs, mock data labels, or prompt instructions leak into the manuscript.
+- Never put a number in a main table unless it traces to a raw result file, command/config, seed, dataset split, and aggregation rule.
+- Keep official reported numbers, reproduced numbers, adapted-baseline numbers, and reimplemented-baseline numbers visibly separated.
+- Do not avoid a strong baseline merely because it is hard to run. Record why it is excluded, approximated, or moved to a background comparison.
 
 ## LaTeX Rules
 
@@ -221,6 +278,9 @@ Load only the needed file:
 
 - `references/latex-overleaf.md`: official template, Overleaf workflow, formatting constraints.
 - `references/top-conference-pipeline.md`: general conference workflow, checkpoints, and artifacts.
+- `references/research-experiment-pipeline.md`: full research-to-paper workflow from question to baselines, code, training, results, and paper.
+- `references/baseline-source-and-existing-results.md`: baseline source discovery, official/reproduced/adapted/reimplemented baseline registry, and existing result ingestion.
+- `references/compute-training-and-results.md`: compute profiling, run planning, training execution, result aggregation, and top-conference figure/table generation.
 - `references/multi-agent-orchestration.md`: agent roles, dispatch rules, file ownership, and synthesis protocol.
 - `references/section-recipes.md`: paragraph and section-level writing recipes.
 - `references/evidence-and-related-work.md`: citation discipline and related-work synthesis.

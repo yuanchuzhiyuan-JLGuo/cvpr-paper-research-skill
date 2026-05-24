@@ -6,6 +6,9 @@ This workflow is a top-conference adaptation of rigorous academic research pipel
 
 | Stage | Purpose | Required artifact | Gate |
 |---|---|---|---|
+| -3. Research assets | Survey baselines/datasets, discover source code, ingest existing results | `plan/baseline-dataset-survey.md`, `baselines/source-registry.md`, `plan/existing-asset-index.md` | No blank-slate work |
+| -2. Compute and execution | Profile devices, plan feasible smoke/pilot/main/submission runs | `plan/compute-profile.md`, `plan/experiment-matrix.yaml` | Feasible experiments |
+| -1. Result analysis | Aggregate metrics, tables, figures, and failure cases from raw files | `analysis/result-summary.md`, `tables/*.tex`, `figures/*` | Real results only |
 | 0. Venue profile | Identify venue rules, track, anonymity, template, page limits | `plan/venue-profile.md` | Template/source verified |
 | 1. Positioning | Define problem, gap, contribution boundary | `plan/paper-positioning.md` | Claims are scoped |
 | 2. Evidence map | Tie background and related work to sources | `plan/evidence-map.md` | Each citation has a role |
@@ -33,6 +36,7 @@ This workflow is a top-conference adaptation of rigorous academic research pipel
 | 9. Freeze and format | `format_agent` |
 
 For full submissions, create `plan/agent-workplan.md` and follow `multi-agent-enhanced` mode in `multi-agent-orchestration.md`.
+For workflows that include code execution, baseline reproduction, or continued experiments, use `research-experiment-paper` mode and read `references/research-experiment-pipeline.md`.
 
 ## Checkpoint Rule
 
@@ -44,6 +48,9 @@ Examples:
 - No full source support -> do not claim a prior method "cannot" do something.
 - No run log -> do not report a numerical result as real.
 - No official template -> do not call the PDF submission-ready.
+- No raw metric/log file -> do not put the number in a paper table.
+- No official/adapted/reimplemented baseline classification -> do not use the baseline as a main comparison.
+- No compute/run record -> do not describe an experiment as executed.
 
 ## Venue Profile
 

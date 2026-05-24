@@ -50,6 +50,8 @@ Include:
 - ablations of your own method;
 - oracle or upper-bound variants if useful.
 
+Classify every baseline as `official`, `reproduced`, `adapted`, `reimplemented`, `reported-only`, or `excluded`. Keep official reported numbers separate from numbers produced under the paper's unified evaluation. If official code/checkpoints exist, prefer using or adapting them over reimplementation; record source URL, license, commit, and any patches.
+
 ## Metric Rules
 
 For every metric, state:
@@ -144,3 +146,5 @@ The method does not improve [metric] under [condition], indicating that [module/
 | Reproducibility | configs, hardware, training details |
 | Integrity | each result traceable to logs, data, configs, or user-provided records |
 | Statistics | mean/std or confidence where appropriate |
+| Source code | baseline code/checkpoint source and adaptation class recorded |
+| Existing assets | prior checkpoints/logs/metrics scanned before launching duplicate runs |
